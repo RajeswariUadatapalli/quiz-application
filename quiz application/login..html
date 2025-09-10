@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz App — Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container fade-in" id="page">
+    <div class="app-header">
+      <div class="brand">
+        <div class="logo">QZ</div>
+        <div>
+          <div class="title">Skill Quiz</div>
+          <div class="subtitle">Login to attempt quizzes — dark glass UI</div>
+        </div>
+      </div>
+    </div>
+
+    <section class="card center" style="flex-direction:column;gap:12px;max-width:520px;margin:auto">
+      <h2 style="margin:0">Welcome</h2>
+      <p class="subtitle" style="text-align:center;margin:0 0 8px 0">Sign in to continue</p>
+      <form id="loginForm" style="width:100%;max-width:420px">
+        <label class="subtitle" for="username">Username</label>
+        <input id="username" name="username" type="text" placeholder="Enter your name" required
+               style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;margin-bottom:10px" />
+        <label class="subtitle" for="password">Password</label>
+        <input id="password" name="password" type="password" placeholder="Enter password (any for demo)" required
+               style="width:100%;padding:10px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:#fff;margin-bottom:10px" />
+        <div style="display:flex;gap:8px;align-items:center;justify-content:space-between;margin-top:8px;">
+          <button class="btn primary" type="submit">Sign in</button>
+          <button id="guestBtn" type="button" class="btn ghost">Continue as Guest</button>
+        </div>
+        <div id="loginError" style="color:#ff9b9b;margin-top:8px;display:none"></div>
+      </form>
+    </section>
+
+    <p style="text-align:center;margin-top:16px;color:var(--muted);font-size:0.9rem">This is a demo login — any non-empty credentials will work.</p>
+  </main>
+<script src="login.js"></script>
+</body>
+</html>

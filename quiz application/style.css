@@ -1,0 +1,124 @@
+/* style.css
+   Dark mode + glassmorphism, smooth transitions and responsive layout.
+*/
+
+/* --- Page basics --- */
+:root{
+  --bg1: #0b1020;
+  --glass: rgba(255,255,255,0.04);
+  --glass-2: rgba(255,255,255,0.06);
+  --accent: linear-gradient(90deg,#7b61ff,#2ad0a8);
+  --card-radius: 16px;
+  --muted: rgba(255,255,255,0.65);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial}
+body{
+  background: radial-gradient(1200px 700px at 10% 10%, rgba(40,50,90,0.35), transparent),
+              radial-gradient(1000px 600px at 90% 90%, rgba(30,20,60,0.35), transparent),
+              var(--bg1);
+  color: #fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  scroll-behavior:smooth;
+}
+/* --- Glass card --- */
+.container {
+  width:100%;
+  max-width:980px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+  border-radius: var(--card-radius);
+  padding:20px;
+  box-shadow: 0 8px 30px rgba(2,6,23,0.7);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  transition: transform .45s cubic-bezier(.2,.9,.2,1), opacity .35s ease;
+  overflow: hidden;
+}
+
+/* Fade in/out helper */
+.fade-out { opacity: 0; transform: translateY(18px) scale(.995); pointer-events:none; }
+.fade-in { opacity: 1; transform: translateY(0); pointer-events:auto; }
+
+/* --- Header common --- */
+.app-header {
+  display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;
+  gap:12px;
+}
+.brand {
+  display:flex;gap:12px;align-items:center;
+}
+.logo {
+  width:52px;height:52px;border-radius:12px;
+  background:linear-gradient(135deg,#7b61ff,#2ad0a8);
+  display:flex;align-items:center;justify-content:center;font-weight:700;color:#062;
+  box-shadow:0 6px 18px rgba(123,97,255,0.12);
+}
+.title { font-size:1.2rem; margin:0; }
+.subtitle { font-size:0.85rem; color:var(--muted); margin-top:2px; }
+
+/* --- Layout for quiz page --- */
+.grid {
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:18px;
+}
+@media (max-width:880px){ .grid{grid-template-columns:1fr} }
+
+/* --- Sidebar categories --- */
+.sidebar .panel { padding:14px; border-radius:12px; background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent); }
+.category { padding:10px 12px; border-radius:10px; cursor:pointer; margin-bottom:8px; border:1px solid rgba(255,255,255,0.04); transition: all .2s; }
+.category:hover { transform: translateX(6px); }
+.category.active { background: linear-gradient(90deg,#7b61ff88,#2ad0a888); box-shadow:0 8px 20px rgba(42,208,168,0.06); color:#021; font-weight:700; }
+
+/* --- Card area --- */
+.card { padding:16px; border-radius:12px; background: rgba(0,0,0,0.20); }
+.center { display:flex; align-items:center; justify-content:center; }
+
+/* --- Quiz question area --- */
+.qmeta { display:flex;justify-content:space-between;align-items:center;margin-bottom:12px; color:var(--muted) }
+.question { font-size:1.05rem; font-weight:600; margin-bottom:12px; }
+.answers { display:grid; gap:10px; margin-top:8px; }
+.option {
+  padding:12px 14px; border-radius:10px; cursor:pointer;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border:1px solid rgba(255,255,255,0.04);
+  transition: transform .15s, box-shadow .15s, background .15s;
+}
+.option:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(2,6,23,0.6); }
+.option.selected { outline:3px solid rgba(255,255,255,0.06); box-shadow:0 10px 30px rgba(0,0,0,0.6); }
+
+/* correct/incorrect styles (applied after answer) */
+.option.correct { background: linear-gradient(90deg, rgba(34,197,94,0.18), rgba(16,185,129,0.12)); border-color: rgba(34,197,94,0.3); }
+.option.wrong { background: linear-gradient(90deg, rgba(239,68,68,0.12), rgba(245,158,11,0.06)); border-color: rgba(239,68,68,0.28); }
+
+/* --- controls --- */
+.controls { display:flex; justify-content:space-between; align-items:center; margin-top:14px; gap:12px; }
+.btn { padding:8px 12px; border-radius:10px; border:none; font-weight:700; cursor:pointer; }
+.btn.ghost { background:transparent; border:1px solid rgba(255,255,255,0.06); color:#fff; }
+.btn.primary { background: linear-gradient(90deg,#7b61ff,#2ad0a8); color:#071; box-shadow: 0 10px 30px rgba(123,97,255,0.12); }
+
+/* progress bar */
+.progress { height:10px; width:100%; background: rgba(255,255,255,0.04); border-radius:10px; overflow:hidden; }
+.progress > i { display:block; height:100%; width:0%; background: linear-gradient(90deg,#ffd166,#ff6b6b); transition: width .4s ease; }
+
+/* --- Result area --- */
+.result-title { font-size:1.2rem; font-weight:700; margin-bottom:8px; }
+.result-sub { color:var(--muted); margin-bottom:12px; }
+
+/* small screens tweaks */
+@media (max-width:480px){
+  .question { font-size:1rem }
+  .title { font-size:1rem }
+  .logo { width:42px;height:42px }
+}
+.category{
+  border:1px solid #444;
+  padding:8px;
+  margin:5px;
+  cursor:pointer;
+  background: #474242;
+}

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz App — Result</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container fade-in" id="page">
+    <div class="app-header">
+      <div class="brand">
+        <div class="logo">QZ</div>
+        <div>
+          <div class="title">Quiz Result</div>
+          <div class="subtitle" id="userLabel">Result</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <button id="backBtn" class="btn ghost">Back to Quizzes</button>
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+      </div>
+    </div>
+
+    <section class="card center" style="flex-direction:column;gap:12px;min-height:200px">
+      <div id="resultBlock">
+        <!-- JS will populate -->
+      </div>
+</section>
+  </main>
+
+  <script src="result.js"></script>
+</body>
+</html>
